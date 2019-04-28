@@ -1,0 +1,10 @@
+.form-container{
+    width: 20%;
+    position: absolute;
+    top: 20%;
+    width: 30%;
+    background: white;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 10px;
+}
