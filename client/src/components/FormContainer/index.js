@@ -11,12 +11,12 @@ export default function FormContainer(props) {
             <h1>Save a book to the database!</h1>
 
             <FormLabel>Title:</FormLabel>
-            <Form />
+            <Form name="title" handleInputChange={props.handleInputChange} placeholder="The Great Gatsby" value={props.title} />
             <FormLabel>Author:</FormLabel>
-            <Form />
+            <Form name="author" handleInputChange={props.handleInputChange} placeholder="F. Scott Fitzgerald" value={props.author} />
             <FormLabel>Synopsis:</FormLabel>
-            <Form />
-            <Button handleActivateSpinner={props.handleActivateSpinner} showSpinner={props.showSpinner} />
+            <Form name="synopsis" handleInputChange={props.handleInputChange} placeholder="Poor rich man loses love of life" value={props.synopsis} />
+            <Button handleButtonSubmit={props.handleButtonSubmit} showSpinner={props.showSpinner} />
         </div>
     )
 }

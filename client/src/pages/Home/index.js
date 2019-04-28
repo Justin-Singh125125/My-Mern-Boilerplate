@@ -15,6 +15,10 @@ import "./style.css"
 class Home extends Component {
 
     state = {
+        title: "",
+        author: "",
+        synopsis: "",
+
         test: [],
         anotherTest: [],
         showSpinner: false
@@ -62,6 +66,58 @@ class Home extends Component {
             showSpinner: true
         })
     }
+    handleDeactivateSpinner = () => {
+        this.setState({ showSpinner: false })
+    }
+    handleInputChange = (e) => {
+
+        const { value, name } = e.target;
+        // this.setState({ [value]: value })
+        this.setState({ [name]: value })
+    }
+    handleButtonSubmit = () => {
+        this.handleActivateSpinner();
+        this.handleSendBookToDatabase();
+    }
+
+    handleSendBookToDatabase = () => {
+        var newBook = {
+            title: this.state.title,
+            author: this.state.author,
+            synopsis: this.state.synopsis
+        }
+
+        if (this.state.title && this.state.author && this.state.synopsis) {
+            API.saveBook(newBook).then((data) => {
+                console.log(data);
+                this.handleDeactivateSpinner();
+                this.handleRemoveInputText();
+                this.handleAlertSuccess();
+            })
+        }
+        else {
+            this.handleDeactivateSpinner();
+            this.handleAlertFailure()
+        }
+
+
+    }
+
+    handleRemoveInputText = () => {
+        this.setState({
+            title: "",
+            author: "",
+            synopsis: ""
+        })
+    }
+
+    handleAlertSuccess = () => {
+        alert("Book added to database successfully")
+    }
+    handleAlertFailure = () => {
+        alert("Book added to database Failed")
+    }
+
 
 
 
@@ -70,7 +126,14 @@ class Home extends Component {
             <div className="App">
 
 
-                <FormContainer handleActivateSpinner={this.handleActivateSpinner} showSpinner={this.state.showSpinner} />
+                <FormContainer
+                    handleInputChange={this.handleInputChange}
+                    handleButtonSubmit={this.handleButtonSubmit}
+                    showSpinner={this.state.showSpinner}
+                    title={this.state.title}
+                    author={this.state.author}
+                    synopsis={this.state.synopsis}
+                />
 
             </div>
         );
