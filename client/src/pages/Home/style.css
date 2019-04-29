@@ -7,3 +7,19 @@
     position: relative;
 }
 
+.save-book-container{
+    position: absolute;
+    top: 20%;
+    width: 40%;
+    margin: 20px;
+    padding: 10px;
+}
+
+.retrieve-book-container{
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 40%;
+    margin: 20px;
+    padding: 10px;
+}

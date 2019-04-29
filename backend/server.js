@@ -27,7 +27,7 @@ app.get("*", function (req, res) {
 });
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://test:testing1@ds145389.mlab.com:45389/sick-database";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://test:testing1@ds145289.mlab.com:45289/sick-database";
 
 mongoose.connect(MONGODB_URI, () => {
     console.log(MONGODB_URI + " Connected to Mongodb");

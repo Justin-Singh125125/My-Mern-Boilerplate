@@ -7,7 +7,7 @@ import Button from "../Button";
 
 export default function FormContainer(props) {
     return (
-        <div className="form-container">
+        <div className="form-container-component">
             <h1>Save a book to the database!</h1>
 
             <FormLabel>Title:</FormLabel>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import API from "../../utils/Api";
+import Table from "../../components/Table";
 
 
 import FormContainer from "../../components/FormContainer";
@@ -125,15 +126,19 @@ class Home extends Component {
         return (
             <div className="App">
 
-
-                <FormContainer
-                    handleInputChange={this.handleInputChange}
-                    handleButtonSubmit={this.handleButtonSubmit}
-                    showSpinner={this.state.showSpinner}
-                    title={this.state.title}
-                    author={this.state.author}
-                    synopsis={this.state.synopsis}
-                />
+                <div className="save-book-container">
+                    <FormContainer
+                        handleInputChange={this.handleInputChange}
+                        handleButtonSubmit={this.handleButtonSubmit}
+                        showSpinner={this.state.showSpinner}
+                        title={this.state.title}
+                        author={this.state.author}
+                        synopsis={this.state.synopsis}
+                    />
+                </div>
+                <div className="retrieve-book-container">
+                    <Table />
+                </div>
 
             </div>
         );
