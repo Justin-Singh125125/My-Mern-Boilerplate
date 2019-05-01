@@ -8,6 +8,9 @@ import Table from "../../components/Table";
 import FormContainer from "../../components/FormContainer";
 
 
+
+
+
 import "./style.css"
 
 
@@ -20,6 +23,7 @@ class Home extends Component {
         author: "",
         synopsis: "",
 
+        allBooks: [],
         test: [],
         anotherTest: [],
         showSpinner: false
@@ -27,6 +31,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.handleSetData();
+        this.handleRetreiveAllBooks();
     }
 
     handleSetData = () => {
@@ -35,7 +40,7 @@ class Home extends Component {
                 test: res.data
             })
 
-            console.log(res)
+
         })
     }
 
@@ -54,11 +59,9 @@ class Home extends Component {
             author: "so much",
             synopsis: "asdfasdf"
         }
-        console.log(newBook);
 
         API.saveBook(newBook).then((data) => {
-            console.log("pushed")
-            console.log(data);
+
         })
     }
 
@@ -90,10 +93,11 @@ class Home extends Component {
 
         if (this.state.title && this.state.author && this.state.synopsis) {
             API.saveBook(newBook).then((data) => {
-                console.log(data);
                 this.handleDeactivateSpinner();
                 this.handleRemoveInputText();
                 this.handleAlertSuccess();
+
+                this.handleRetreiveAllBooks();
             })
         }
         else {
@@ -103,6 +107,16 @@ class Home extends Component {
 
 
     }
+    handleRetreiveAllBooks = () => {
+        API.getBooks().then((data) => {
+            console.log(data);
+            this.setState({
+                allBooks: data.data
+            })
+        })
+    }
+
+
 
     handleRemoveInputText = () => {
         this.setState({
@@ -137,7 +151,7 @@ class Home extends Component {
                     />
                 </div>
                 <div className="retrieve-book-container">
-                    <Table />
+                    <Table allBooks={this.state.allBooks} />
                 </div>
 
             </div>

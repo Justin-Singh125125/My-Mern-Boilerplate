@@ -1,37 +1,57 @@
 import React from 'react';
 import "./style.css";
+import TableHeader from "../TableHeader";
+import TableRow from "../TableRow";
+import TableData from "../TableData";
 
-export default function Table() {
+function addOne(props) {
+    index++;
+    if (index > props.allBooks.length) {
+        index = 0;
+    }
+    return index;
+}
+
+var index = 0;
+function handleRenderTable(props) {
+    console.log(props.allBooks);
+    return props.allBooks.map((data) => (
+        <TableRow >
+            <TableHeader index={addOne(props)} />
+            <TableData data={data.title} />
+            <TableData data={data.author} />
+            <TableData data={data.synopsis} />
+        </TableRow >
+    ))
+
+
+
+    // <TableRow>
+    //     <TableHeader />
+    //     <TableData />
+    //     <TableData />
+    //     <TableData />
+    // </TableRow>
+}
+
+export default function Table(props) {
+
     return (
         <div>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Synopsis</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+
+                    {props.allBooks.length !== 0 ? handleRenderTable(props) : ""}
+
+
                 </tbody>
             </table>
         </div>
