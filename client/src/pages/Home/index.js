@@ -95,8 +95,6 @@ class Home extends Component {
             API.saveBook(newBook).then((data) => {
                 this.handleDeactivateSpinner();
                 this.handleRemoveInputText();
-                this.handleAlertSuccess();
-
                 this.handleRetreiveAllBooks();
             })
         }
@@ -126,9 +124,7 @@ class Home extends Component {
         })
     }
 
-    handleAlertSuccess = () => {
-        alert("Book added to database successfully")
-    }
+
     handleAlertFailure = () => {
         alert("Book added to database Failed")
     }
