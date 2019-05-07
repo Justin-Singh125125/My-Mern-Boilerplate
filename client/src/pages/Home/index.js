@@ -39,9 +39,10 @@ class Home extends Component {
             this.setState({
                 test: res.data
             })
-
-
-        })
+            .catch((err) => {
+                console.log("Something went wrong");
+            });
+        });
     }
 
     handleRenderTestList = () => {

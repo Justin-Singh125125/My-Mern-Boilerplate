@@ -14,7 +14,4 @@ router.get("/getAll", (req, res) => {
     res.json(newList);
 })
 
-
-
-
 module.exports = router;
