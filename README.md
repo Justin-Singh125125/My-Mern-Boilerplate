@@ -28,14 +28,8 @@ You then must build the client. From the `client/` directory:
 yarn build
 ```
 
-Node will tell you that the `build` folder is ready to be deployed and to do:
-
-```bash
-yarn global add serve
-serve -s build
-```
-
-Go ahead and do that.
+Now that the React client is built, all you have to do is run the Express
+server to see everything in action.
 
 Run `yarn start` to begin the full stack app. Navigate to
-[http://localhost:5000](http://localhost:5000) to see the app running.
+[http://localhost:8080](http://localhost:8080) to see the app running.
